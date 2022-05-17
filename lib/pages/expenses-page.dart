@@ -1,5 +1,5 @@
-import 'package:financas/controllers/homeController.dart/group-control.dart';
-import 'package:financas/controllers/homeController.dart/home-control.dart';
+import 'package:financas/controllers/homeController.dart/expenses-control.dart';
+import 'package:financas/controllers/homeController.dart/groups-control.dart';
 import 'package:financas/custons/card-custon.dart';
 import 'package:financas/custons/icon-app-bar.dart';
 import 'package:financas/custons/text-custons.dart';
@@ -9,15 +9,15 @@ import 'package:financas/models/expense.dart';
 import 'package:financas/routes.dart';
 import 'package:flutter/material.dart';
 
-class GroupPage extends StatefulWidget {
-  const GroupPage({Key? key}) : super(key: key);
+class ExpensesPage extends StatefulWidget {
+  const ExpensesPage({Key? key}) : super(key: key);
 
   @override
-  State<GroupPage> createState() => _GroupPageState();
+  State<ExpensesPage> createState() => _ExpensesPageState();
 }
 
-class _GroupPageState extends State<GroupPage> {
-  final controller = GroupControl();
+class _ExpensesPageState extends State<ExpensesPage> {
+  final controller = ExpensesControl();
   @override
   Widget build(BuildContext context) {
     final group = ModalRoute.of(context)!.settings.arguments as ExpenseGroup;
@@ -89,7 +89,7 @@ Widget iconReport(context, group) {
   );
 }
 
-void dialog(BuildContext context, Expense expense, GroupControl controller) {
+void dialog(BuildContext context, Expense expense, ExpensesControl controller) {
   return alertaShowDialog(
       context: context,
       title: "Novo gasto:",

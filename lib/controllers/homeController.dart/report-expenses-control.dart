@@ -2,7 +2,7 @@ import 'package:financas/models/expense-group.dart';
 import 'package:financas/models/expense.dart';
 import 'package:flutter/material.dart';
 
-class ReportGroupControl extends ChangeNotifier {
+class ReportExpensesControl extends ChangeNotifier {
 
   double _totalExpense = 0;
   double _totalRemaining = 0;

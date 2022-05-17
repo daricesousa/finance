@@ -1,5 +1,5 @@
 import 'package:financas/custons/color-custon.dart';
-import 'package:financas/pages/home.dart';
+import 'package:financas/pages/groups-page.dart';
 import 'package:financas/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: const Home(),
+      home: const GroupsPage(),
       routes: Routes.routes
     );
   }

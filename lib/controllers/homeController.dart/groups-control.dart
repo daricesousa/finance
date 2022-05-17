@@ -2,7 +2,7 @@
 import 'package:financas/models/expense-group.dart';
 import 'package:flutter/material.dart';
 
-class HomeControl extends ChangeNotifier {
+class GroupsControl extends ChangeNotifier {
  
 
  List<ExpenseGroup>_listGroup = [];

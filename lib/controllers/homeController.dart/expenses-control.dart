@@ -3,7 +3,7 @@ import 'package:financas/models/expense-group.dart';
 import 'package:financas/models/expense.dart';
 import 'package:flutter/material.dart';
 
-class GroupControl extends ChangeNotifier {
+class ExpensesControl extends ChangeNotifier {
  
  void newExpense({required ExpenseGroup group, required String title, required String price}){
       final newExpense = Expense();

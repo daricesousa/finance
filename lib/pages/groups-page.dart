@@ -1,22 +1,20 @@
-import 'package:financas/controllers/homeController.dart/home-control.dart';
+import 'package:financas/controllers/homeController.dart/groups-control.dart';
 import 'package:financas/custons/card-custon.dart';
-import 'package:financas/custons/icon-app-bar.dart';
-import 'package:financas/custons/text-custons.dart';
 import 'package:financas/custons/dialog.dart';
+import 'package:financas/custons/icon-app-bar.dart';
 import 'package:financas/models/expense-group.dart';
-import 'package:financas/pages/groupPage.dart';
 import 'package:financas/routes.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class GroupsPage extends StatefulWidget {
+  const GroupsPage({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<GroupsPage> createState() => _GroupsPageState();
 }
 
-class _HomeState extends State<Home> {
-  final controller = HomeControl();
+class _GroupsPageState extends State<GroupsPage> {
+  final controller = GroupsControl();
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -70,7 +68,7 @@ class _HomeState extends State<Home> {
   }
 }
 
-Widget iconAdd(BuildContext context, HomeControl controller) {
+Widget iconAdd(BuildContext context, GroupsControl controller) {
   return IconAppBar(
     onPressed: () {
       alertaShowDialog(
@@ -85,7 +83,7 @@ Widget iconAdd(BuildContext context, HomeControl controller) {
   );
 }
 
-Widget iconReport(context, HomeControl controller) {
+Widget iconReport(context, GroupsControl controller) {
   return IconAppBar(
     onPressed: () {
       Navigator.pushNamed(context, RoutesName.REPORT,

@@ -1,7 +1,7 @@
 
 
-import 'package:financas/controllers/homeController.dart/home-control.dart';
-import 'package:financas/controllers/homeController.dart/report-control.dart';
+import 'package:financas/controllers/homeController.dart/groups-control.dart';
+import 'package:financas/controllers/homeController.dart/report-groups-control.dart';
 import 'package:financas/models/expense-group.dart';
 import 'package:financas/models/expense.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class Report extends StatefulWidget {
 
 
 class _ReportState extends State<Report> {
-final controller = ReportControl();
+final controller = ReportGroupsControl();
 
 @override
 
@@ -38,7 +38,7 @@ final controller = ReportControl();
   }
 }
 
-Widget body(ReportControl controller) {
+Widget body(ReportGroupsControl controller) {
   return ListView(
     children: [
        ListTile(
