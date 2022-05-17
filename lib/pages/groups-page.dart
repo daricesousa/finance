@@ -38,13 +38,14 @@ class _GroupsPageState extends State<GroupsPage> {
     return ListView.builder(
         itemCount: controller.listGroup.length,
         itemBuilder: (context, index) {
-          return card_custon(controller.listGroup[index]);
+          return card(controller.listGroup[index]);
         });
   }
 
-  Widget card_custon(ExpenseGroup group) {
+  Widget card(ExpenseGroup group) {
     return CardCuston(
-      text: "${group.title}, ${group.maxExpense}",
+      text: group.title,
+      price: "R\$ ${group.maxExpense.toStringAsFixed(2)}",
       onTap: () {
         Navigator.pushNamed(context, RoutesName.GROUP, arguments: group);
       },

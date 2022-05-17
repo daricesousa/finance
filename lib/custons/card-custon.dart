@@ -8,9 +8,11 @@ class CardCuston extends StatelessWidget {
   final void Function() onLongPress;
   final void Function() delete;
   final String text;
+  final String price;
   const CardCuston({
     Key? key,
     required this.text,
+    this.price = '',
     required this.onTap,
     required this.onLongPress,
     required this.delete,
@@ -20,14 +22,13 @@ class CardCuston extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Dismissible(
-        key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
-        direction: DismissDirection.endToStart,
-        onDismissed: (direction) async {
-          delete();
-        },
-        background: _backgroudDelete(),
-        child: _card(),
-      ),
+          key: Key(DateTime.now().millisecondsSinceEpoch.toString()),
+          direction: DismissDirection.endToStart,
+          onDismissed: (direction) async {
+            delete();
+          },
+          background: _backgroudDelete(),
+          child: _listTile()),
     );
   }
 
@@ -44,21 +45,18 @@ class CardCuston extends StatelessWidget {
     );
   }
 
-  Widget _card() {
-    return GestureDetector(
-      child:
-          Align(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(text, textAlign: TextAlign.center, style: TextCustons.simples),
-            ),
-          ),
-      onTap: () {
-        onTap();
-      },
-      onLongPress: () {
-        onLongPress();
-      },
+  Widget _listTile() {
+    return ListTile(
+      title: Align(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(text,
+              textAlign: TextAlign.center, style: TextCustons.simples),
+        ),
+      ),
+      trailing: Text(price),
+      onTap: onTap,
+      onLongPress: onLongPress,
     );
   }
 }

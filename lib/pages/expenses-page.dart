@@ -52,7 +52,8 @@ class _ExpensesPageState extends State<ExpensesPage> {
 
   Widget card(ExpenseGroup group, Expense expense) {
     return CardCuston(
-        text: "${expense.title}, ${expense.price}",
+        text: expense.title,
+        price: "R\$ ${expense.price.toStringAsFixed(2)}",
         onTap: () {
           dialog(context, expense, controller);
         },

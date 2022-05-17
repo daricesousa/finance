@@ -24,10 +24,7 @@ class GroupsControl extends ChangeNotifier {
  }
 
  void deleteGroup({required ExpenseGroup group}){
-  //  listGroup.remove(group.id);
-  //   int indexGroupDelete = listGroup.indexWhere((element) => element.id == group.id);
     _listGroup.removeWhere((element) => element.id == group.id);
-    // await Arquivo.saveData(_lista);
     notifyListeners();
 
  }
