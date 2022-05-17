@@ -2,15 +2,15 @@ import 'package:financas/controllers/homeController.dart/report-expenses-control
 import 'package:financas/models/expense-group.dart';
 import 'package:flutter/material.dart';
 
-class ReportGroup extends StatefulWidget {
-  const ReportGroup({Key? key}) : super(key: key);
+class ReportExpenses extends StatefulWidget {
+  const ReportExpenses({Key? key}) : super(key: key);
 
   @override
-  State<ReportGroup> createState() => _ReportGroupState();
+  State<ReportExpenses> createState() => _ReportExpensesState();
 }
 
 
-class _ReportGroupState extends State<ReportGroup> {
+class _ReportExpensesState extends State<ReportExpenses> {
 final controller = ReportExpensesControl();
 
 @override

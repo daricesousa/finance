@@ -84,7 +84,7 @@ Widget iconAdd(context, controller, group) {
 Widget iconReport(context, group) {
   return IconAppBar(
     onPressed: () {
-      Navigator.pushNamed(context, RoutesName.REPORT_GROUP, arguments: group);
+      Navigator.pushNamed(context, RoutesName.REPORT_EXPENSES, arguments: group);
     },
     icon: Icons.note,
   );

@@ -1,4 +1,5 @@
 
+import 'package:financas/pages/dates-page.dart';
 import 'package:financas/pages/expenses-page.dart';
 import 'package:financas/pages/groups-page.dart';
 import 'package:financas/pages/report-expenses.dart';
@@ -9,18 +10,20 @@ final navigatorKey = GlobalKey<NavigatorState>();
 final navigator = navigatorKey.currentState!;
 
 class Routes {
-  static const initial = RoutesName.HOME;
+  static const initial = RoutesName.DATES;
   static Map<String, Widget Function(BuildContext)> routes = {
-    RoutesName.HOME: (_) => GroupsPage(),
-    RoutesName.GROUP: (_) => ExpensesPage(),
-    RoutesName.REPORT_GROUP: (_)=> ReportGroup(),
-    RoutesName.REPORT: (_)=> Report()
+    RoutesName.DATES: (_) => DatesPage(),
+    RoutesName.GROUPS: (_) => GroupsPage(),
+    RoutesName.EXPENSES: (_) => ExpensesPage(),
+    RoutesName.REPORT_GROUPS: (_)=> ReportGroups(),
+    RoutesName.REPORT_EXPENSES: (_)=> ReportExpenses()
   };
 }
 
 class RoutesName {
-  static const HOME = '/home';
-  static const GROUP = '/group';
-  static const REPORT = '/report';
-  static const REPORT_GROUP = '/reportgroup';
+  static const DATES = '/dates';
+  static const EXPENSES = '/expenses';
+  static const GROUPS = '/groups';
+  static const REPORT_EXPENSES = '/reportExpenses';
+  static const REPORT_GROUPS = '/reportGroups';
 }

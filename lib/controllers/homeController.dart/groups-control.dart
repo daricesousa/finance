@@ -1,19 +1,16 @@
 
+import 'package:financas/models/date.dart';
 import 'package:financas/models/expense-group.dart';
 import 'package:flutter/material.dart';
 
 class GroupsControl extends ChangeNotifier {
  
 
- List<ExpenseGroup>_listGroup = [];
-
- get listGroup => _listGroup;
-
- void newGroup({required String title, required String maxExpense}){
+ void newGroup({required Date date, required String title, required String maxExpense}){
       final newGroup = ExpenseGroup();
       newGroup.maxExpense = double.tryParse(maxExpense) ?? 0;
       newGroup.title = title;
-      _listGroup.add(newGroup);
+      date.groups.add(newGroup);
       notifyListeners();
  }
 
@@ -23,8 +20,8 @@ class GroupsControl extends ChangeNotifier {
       notifyListeners();
  }
 
- void deleteGroup({required ExpenseGroup group}){
-    _listGroup.removeWhere((element) => element.id == group.id);
+ void deleteGroup({required Date date, required ExpenseGroup group}){
+    date.groups.removeWhere((element) => element.id == group.id);
     notifyListeners();
 
  }

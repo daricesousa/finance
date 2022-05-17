@@ -1,5 +1,4 @@
-import 'package:financas/custons/color-custon.dart';
-import 'package:financas/pages/groups-page.dart';
+import 'package:financas/pages/dates-page.dart';
 import 'package:financas/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -14,14 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-      ),
-      home: const GroupsPage(),
-      routes: Routes.routes
-    );
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blueGrey,
+        ),
+        home: DatesPage(),
+        routes: Routes.routes);
   }
 }
-
