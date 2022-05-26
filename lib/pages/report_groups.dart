@@ -1,8 +1,6 @@
 
-
-import 'package:financas/controllers/homeController.dart/groups-control.dart';
-import 'package:financas/controllers/homeController.dart/report-groups-control.dart';
-import 'package:financas/models/expense-group.dart';
+import 'package:financas/controllers/report_groups_control.dart';
+import 'package:financas/models/expense_group.dart';
 import 'package:financas/models/expense.dart';
 import 'package:flutter/material.dart';
 

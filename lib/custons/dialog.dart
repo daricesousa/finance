@@ -1,6 +1,6 @@
-import 'package:financas/custons/button-custon.dart';
+import 'package:financas/custons/button_custon.dart';
 import 'package:financas/custons/t_field.dart';
-import 'package:financas/custons/text-custons.dart';
+import 'package:financas/custons/text_custons.dart';
 import 'package:flutter/material.dart';
 
 final titleTextControl = TextEditingController();

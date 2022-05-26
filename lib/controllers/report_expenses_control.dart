@@ -1,4 +1,4 @@
-import 'package:financas/models/expense-group.dart';
+import 'package:financas/models/expense_group.dart';
 import 'package:financas/models/expense.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ class ReportExpensesControl extends ChangeNotifier {
 
   calcular(ExpenseGroup group){
     _totalExpense = 0;
-    for (Expense expense in group.expense){
+    for (Expense expense in group.expenses){
       _totalExpense += expense.price;
     }
 

@@ -1,6 +1,6 @@
 
 import 'package:financas/models/date.dart';
-import 'package:financas/models/expense-group.dart';
+import 'package:financas/models/expense_group.dart';
 import 'package:flutter/material.dart';
 
 class GroupsControl extends ChangeNotifier {

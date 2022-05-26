@@ -1,10 +1,10 @@
-import 'package:financas/controllers/homeController.dart/expenses-control.dart';
-import 'package:financas/controllers/homeController.dart/groups-control.dart';
-import 'package:financas/custons/card-custon.dart';
-import 'package:financas/custons/icon-app-bar.dart';
-import 'package:financas/custons/text-custons.dart';
+
+import 'package:financas/controllers/expenses_control.dart';
+import 'package:financas/custons/card_custon.dart';
+import 'package:financas/custons/icon_app_bar.dart';
+import 'package:financas/custons/text_custons.dart';
 import 'package:financas/custons/dialog.dart';
-import 'package:financas/models/expense-group.dart';
+import 'package:financas/models/expense_group.dart';
 import 'package:financas/models/expense.dart';
 import 'package:financas/routes.dart';
 import 'package:flutter/material.dart';
@@ -43,9 +43,9 @@ class _ExpensesPageState extends State<ExpensesPage> {
         stream: null,
         builder: (context, snapshot) {
           return ListView.builder(
-              itemCount: group.expense.length,
+              itemCount: group.expenses.length,
               itemBuilder: (context, index) {
-                return card(group, group.expense[index]);
+                return card(group, group.expenses[index]);
               });
         });
   }

@@ -1,9 +1,10 @@
-import 'package:financas/controllers/homeController.dart/groups-control.dart';
-import 'package:financas/custons/card-custon.dart';
+
+import 'package:financas/controllers/groups_control.dart';
+import 'package:financas/custons/card_custon.dart';
 import 'package:financas/custons/dialog.dart';
-import 'package:financas/custons/icon-app-bar.dart';
+import 'package:financas/custons/icon_app_bar.dart';
 import 'package:financas/models/date.dart';
-import 'package:financas/models/expense-group.dart';
+import 'package:financas/models/expense_group.dart';
 import 'package:financas/routes.dart';
 import 'package:flutter/material.dart';
 

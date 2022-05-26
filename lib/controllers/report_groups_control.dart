@@ -1,4 +1,4 @@
-import 'package:financas/models/expense-group.dart';
+import 'package:financas/models/expense_group.dart';
 import 'package:financas/models/expense.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class ReportGroupsControl extends ChangeNotifier {
     _maxExpense = 0;
     for (ExpenseGroup group in listGroups) {
       _maxExpense += group.maxExpense;
-      for (Expense expense in group.expense) {
+      for (Expense expense in group.expenses) {
         _totalExpense += expense.price;
       }
 

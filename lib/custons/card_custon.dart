@@ -1,5 +1,5 @@
-import 'package:financas/custons/color-custon.dart';
-import 'package:financas/custons/text-custons.dart';
+import 'package:financas/custons/color_custon.dart';
+import 'package:financas/custons/text_custons.dart';
 import 'package:financas/custons/dialog.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,6 @@
-import 'package:financas/controllers/homeController.dart/report-expenses-control.dart';
-import 'package:financas/models/expense-group.dart';
+
+import 'package:financas/controllers/report_expenses_control.dart';
+import 'package:financas/models/expense_group.dart';
 import 'package:flutter/material.dart';
 
 class ReportExpenses extends StatefulWidget {

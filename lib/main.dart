@@ -1,4 +1,4 @@
-import 'package:financas/pages/dates-page.dart';
+import 'package:financas/pages/dates_page.dart';
 import 'package:financas/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blueGrey,
         ),
-        home: DatesPage(),
+        initialRoute: Routes.initial,
         routes: Routes.routes);
   }
 }
