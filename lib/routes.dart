@@ -1,4 +1,3 @@
-
 import 'package:financas/pages/dates_page.dart';
 import 'package:financas/pages/expenses_page.dart';
 import 'package:financas/pages/groups_page.dart';
@@ -12,11 +11,11 @@ final navigator = navigatorKey.currentState!;
 class Routes {
   static const initial = RoutesName.DATES;
   static Map<String, Widget Function(BuildContext)> routes = {
-    RoutesName.DATES: (_) => DatesPage(),
-    // RoutesName.GROUPS: (_) => GroupsPage(),
-    // RoutesName.EXPENSES: (_) => ExpensesPage(),
-    // RoutesName.REPORT_GROUPS: (_)=> ReportGroups(),
-    // RoutesName.REPORT_EXPENSES: (_)=> ReportExpenses()
+    RoutesName.DATES: (_) => const DatesPage(),
+    RoutesName.GROUPS: (_) => const GroupsPage(),
+    RoutesName.EXPENSES: (_) => const ExpensesPage(),
+    RoutesName.REPORT_GROUPS: (_) => const ReportGroups(),
+    RoutesName.REPORT_EXPENSES: (_) => const ReportExpenses()
   };
 }
 

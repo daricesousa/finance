@@ -1,9 +1,7 @@
-
 import 'package:financas/controllers/expenses_control.dart';
-import 'package:financas/custons/card_custon.dart';
-import 'package:financas/custons/icon_app_bar.dart';
-import 'package:financas/custons/text_custons.dart';
-import 'package:financas/custons/dialog.dart';
+import 'package:financas/customs/card_custom.dart';
+import 'package:financas/customs/icon_app_bar.dart';
+import 'package:financas/customs/dialog.dart';
 import 'package:financas/models/expense_group.dart';
 import 'package:financas/models/expense.dart';
 import 'package:financas/routes.dart';
@@ -51,7 +49,7 @@ class _ExpensesPageState extends State<ExpensesPage> {
   }
 
   Widget card(ExpenseGroup group, Expense expense) {
-    return CardCuston(
+    return CardCustom(
         text: expense.title,
         price: "R\$ ${expense.price.toStringAsFixed(2)}",
         onTap: () {
@@ -84,7 +82,8 @@ Widget iconAdd(context, controller, group) {
 Widget iconReport(context, group) {
   return IconAppBar(
     onPressed: () {
-      Navigator.pushNamed(context, RoutesName.REPORT_EXPENSES, arguments: group);
+      Navigator.pushNamed(context, RoutesName.REPORT_EXPENSES,
+          arguments: group);
     },
     icon: Icons.note,
   );

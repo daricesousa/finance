@@ -1,8 +1,7 @@
-
 import 'package:financas/controllers/groups_control.dart';
-import 'package:financas/custons/card_custon.dart';
-import 'package:financas/custons/dialog.dart';
-import 'package:financas/custons/icon_app_bar.dart';
+import 'package:financas/customs/card_custom.dart';
+import 'package:financas/customs/dialog.dart';
+import 'package:financas/customs/icon_app_bar.dart';
 import 'package:financas/models/date.dart';
 import 'package:financas/models/expense_group.dart';
 import 'package:financas/routes.dart';
@@ -46,7 +45,7 @@ class _GroupsPageState extends State<GroupsPage> {
   }
 
   Widget card(Date date, ExpenseGroup group) {
-    return CardCuston(
+    return CardCustom(
       text: group.title,
       price: "R\$ ${group.maxExpense.toStringAsFixed(2)}",
       onTap: () {

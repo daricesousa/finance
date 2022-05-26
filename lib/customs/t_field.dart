@@ -1,8 +1,5 @@
-
-
-import 'package:financas/custons/color_custon.dart';
-import 'package:financas/custons/text_custons.dart';
-import 'package:financas/models/mask.dart';
+import 'package:financas/customs/color_custom.dart';
+import 'package:financas/customs/text_custom.dart';
 import 'package:flutter/material.dart';
 
 class TField extends StatelessWidget {
@@ -40,7 +37,7 @@ class TField extends StatelessWidget {
   InputDecoration decoration() {
     return InputDecoration(
       labelText: label,
-      labelStyle: TextCustons.simples,
+      labelStyle: TextCustom.simples,
       enabledBorder: border(),
       focusedBorder: border(),
     );
@@ -48,8 +45,7 @@ class TField extends StatelessWidget {
 
   InputBorder border() {
     return OutlineInputBorder(
-        borderSide: BorderSide(
-            color: ColorCuston.primary.withOpacity(0.5)),
+        borderSide: BorderSide(color: ColorCuston.primary.withOpacity(0.5)),
         borderRadius: BorderRadius.circular(10));
   }
 
@@ -67,5 +63,4 @@ class TField extends StatelessWidget {
   //   }
   // }
 
- 
 }

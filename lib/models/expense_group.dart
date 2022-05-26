@@ -4,7 +4,7 @@ class ExpenseGroup {
   String id = DateTime.now().millisecondsSinceEpoch.toString();
   String title = '';
   List<Expense> expenses = [];
-  double _totalExpense = 0;
+  final _totalExpense = 0.0;
   double maxExpense = 0;
 
   ExpenseGroup();

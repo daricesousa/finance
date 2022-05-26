@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:financas/models/date.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,8 +8,6 @@ class DatesControl extends ChangeNotifier {
 
   DatesControl() {
     _readData();
-    
-    print(_dateList);
   }
 
   List<Date> get dateList => _dateList;
@@ -41,13 +38,13 @@ class DatesControl extends ChangeNotifier {
     String strFavorites = prefs.getString('data') ?? '[]';
     final dates = jsonDecode(strFavorites);
 
-    // _dateList = dates.map<Date>((e) => Date.fromMap(e)).toList();
+    _dateList = dates.map<Date>((e) => Date.fromMap(e)).toList();
     notifyListeners();
   }
 
   Future<void> _salvarDates() async {
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // List<Map<String, dynamic>> dates = _dateList.map((e) => e.toMap()).toList();
-    // prefs.setString("data", jsonEncode(dates));
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<Map<String, dynamic>> dates = _dateList.map((e) => e.toMap()).toList();
+    prefs.setString("data", jsonEncode(dates));
   }
 }

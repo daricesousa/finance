@@ -1,4 +1,4 @@
-import 'package:financas/custons/color_custon.dart';
+import 'package:financas/customs/color_custom.dart';
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {

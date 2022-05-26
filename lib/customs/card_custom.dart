@@ -1,15 +1,14 @@
-import 'package:financas/custons/color_custon.dart';
-import 'package:financas/custons/text_custons.dart';
-import 'package:financas/custons/dialog.dart';
+import 'package:financas/customs/color_custom.dart';
+import 'package:financas/customs/text_custom.dart';
 import 'package:flutter/material.dart';
 
-class CardCuston extends StatelessWidget {
+class CardCustom extends StatelessWidget {
   final void Function() onTap;
   final void Function() onLongPress;
   final void Function() delete;
   final String text;
   final String price;
-  const CardCuston({
+  const CardCustom({
     Key? key,
     required this.text,
     this.price = '',
@@ -51,7 +50,7 @@ class CardCuston extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(text,
-              textAlign: TextAlign.center, style: TextCustons.simples),
+              textAlign: TextAlign.center, style: TextCustom.simples),
         ),
       ),
       trailing: Text(price),

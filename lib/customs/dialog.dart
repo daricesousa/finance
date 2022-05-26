@@ -1,6 +1,6 @@
-import 'package:financas/custons/button_custon.dart';
-import 'package:financas/custons/t_field.dart';
-import 'package:financas/custons/text_custons.dart';
+import 'package:financas/customs/button_custom.dart';
+import 'package:financas/customs/t_field.dart';
+import 'package:financas/customs/text_custom.dart';
 import 'package:flutter/material.dart';
 
 final titleTextControl = TextEditingController();
@@ -21,7 +21,7 @@ void alertaShowDialog({
       return AlertDialog(
         title: Text(
           title,
-          style: TextCustons.simples,
+          style: TextCustom.simples,
         ),
         content: SingleChildScrollView(
           child: Column(
@@ -42,4 +42,3 @@ void alertaShowDialog({
     },
   );
 }
-
