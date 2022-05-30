@@ -1,3 +1,4 @@
+import 'package:financas/controllers/convert.dart';
 import 'package:financas/controllers/dates_control.dart';
 import 'package:financas/controllers/groups_control.dart';
 import 'package:financas/customs/card_custom.dart';
@@ -65,7 +66,7 @@ class _GroupsPageState extends State<GroupsPage> {
   Widget card(Date date, ExpenseGroup group) {
     return CardCustom(
       text: group.title,
-      price: "R\$ ${group.maxExpense.toStringAsFixed(2)}",
+      price: Convert.doubleForReal(group.maxExpense),
       onTap: () {
         Navigator.pushNamed(context, RoutesName.EXPENSES,
             arguments: {"group": group, "datesControl": widget.datesControl});
@@ -75,7 +76,7 @@ class _GroupsPageState extends State<GroupsPage> {
             context: context,
             title: "Editar grupo:",
             titleControl: group.title,
-            priceControl: group.maxExpense.toStringAsFixed(2),
+            priceControl: group.maxExpense,
             confirmar: (text, price) {
               controller.editGroup(
                   group: group, title: text, maxExpense: price);

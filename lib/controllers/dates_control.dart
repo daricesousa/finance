@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:financas/controllers/convert.dart';
 import 'package:financas/models/date.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,7 +15,7 @@ class DatesControl extends ChangeNotifier {
 
   void newDate({required String title, required String salary}) {
     final newDate = Date(title);
-    newDate.salary = double.tryParse(salary) ?? 0;
+    newDate.salary = Convert.realForDouble(salary);
     _dateList.insertAll(0, [newDate]);
     salvarDates();
     notifyListeners();
@@ -22,7 +23,8 @@ class DatesControl extends ChangeNotifier {
 
   void editDate(
       {required Date date, required String title, required String salary}) {
-    date.salary = double.tryParse(salary) ?? 0;
+        
+    date.salary = Convert.realForDouble(salary);
     date.title = title;
     salvarDates();
     notifyListeners();

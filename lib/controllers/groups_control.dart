@@ -1,4 +1,5 @@
 
+import 'package:financas/controllers/convert.dart';
 import 'package:financas/controllers/dates_control.dart';
 import 'package:financas/models/date.dart';
 import 'package:financas/models/expense_group.dart';
@@ -13,15 +14,16 @@ GroupsControl(
 );
  void newGroup({required Date date, required String title, required String maxExpense})async{
       final newGroup = ExpenseGroup();
-      newGroup.maxExpense = double.tryParse(maxExpense) ?? 0;
-      newGroup.title = title;
       date.groups.add(newGroup);
+      editGroup(group: newGroup, title: title, maxExpense: maxExpense);
+      newGroup.maxExpense = Convert.realForDouble(maxExpense);
+      newGroup.title = title;
       await datesControl.salvarDates();
       notifyListeners();
  }
 
  void editGroup({required ExpenseGroup group, required String title, required String maxExpense})async{
-      group.maxExpense = double.tryParse(maxExpense) ?? 0;
+      group.maxExpense = Convert.realForDouble(maxExpense) ;
       group.title = title;
       await datesControl.salvarDates();
       notifyListeners();

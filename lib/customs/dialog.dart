@@ -1,6 +1,8 @@
+import 'package:financas/controllers/convert.dart';
 import 'package:financas/customs/button_custom.dart';
 import 'package:financas/customs/t_field.dart';
 import 'package:financas/customs/text_custom.dart';
+import 'package:financas/models/enum_input_type.dart';
 import 'package:flutter/material.dart';
 
 
@@ -9,7 +11,7 @@ Future<void> alertaShowDialog({
   required Function(String, String)? confirmar,
   String title = '',
   String titleControl = '',
-  String priceControl = '',
+  double priceControl = 0,
 })async {
   final titleTextControl = TextEditingController();
   final price = TextEditingController();
@@ -17,7 +19,7 @@ Future<void> alertaShowDialog({
     context: context,
     builder: (context) {
       titleTextControl.text = titleControl;
-      price.text = priceControl;
+      price.text = Convert.doubleForTextControllerPrice(priceControl);
       return AlertDialog(
         title: Text(
           title,
@@ -28,7 +30,7 @@ Future<void> alertaShowDialog({
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               TField(controller: titleTextControl, label: "Titulo"),
-              TField(controller: price, label: "Valor"),
+              TField(controller: price, label: "Valor", input: inputType.price),
             ],
           ),
         ),

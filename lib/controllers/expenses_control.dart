@@ -1,3 +1,4 @@
+import 'package:financas/controllers/convert.dart';
 import 'package:financas/controllers/dates_control.dart';
 import 'package:financas/models/expense_group.dart';
 import 'package:financas/models/expense.dart';
@@ -12,7 +13,7 @@ class ExpensesControl extends ChangeNotifier {
       required String title,
       required String price}) async {
     final newExpense = Expense();
-    newExpense.price = double.tryParse(price) ?? 0;
+    newExpense.price = Convert.realForDouble(price);
     newExpense.title = title;
     group.expenses.add(newExpense);
     await datesControl.salvarDates();
@@ -23,7 +24,7 @@ class ExpensesControl extends ChangeNotifier {
       {required Expense expense,
       required String title,
       required String price}) async {
-    expense.price = double.tryParse(price) ?? 0;
+    expense.price = Convert.realForDouble(price);
     expense.title = title;
     await datesControl.salvarDates();
     notifyListeners();

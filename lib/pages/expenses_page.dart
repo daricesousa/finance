@@ -111,7 +111,7 @@ Future<void> dialog(
       context: context,
       title: "Novo gasto:",
       titleControl: expense.title,
-      priceControl: expense.price.toStringAsFixed(2),
+      priceControl: expense.price,
       confirmar: (text, price) {
         controller.editExpense(expense: expense, title: text, price: price);
       });

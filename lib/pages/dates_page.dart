@@ -1,3 +1,4 @@
+import 'package:financas/controllers/convert.dart';
 import 'package:financas/controllers/dates_control.dart';
 import 'package:financas/customs/card_custom.dart';
 import 'package:financas/customs/dialog.dart';
@@ -45,7 +46,7 @@ class _DatesPageState extends State<DatesPage> {
   Widget card(Date date) {
     return CardCustom(
       text: date.title,
-      price: "R\$ ${date.salary.toStringAsFixed(2)}",
+      price: Convert.doubleForReal(date.salary),
       onTap: () {
         Navigator.pushNamed(context, RoutesName.GROUPS,
             arguments: {"date": date, "datesControl": controller});
@@ -55,7 +56,7 @@ class _DatesPageState extends State<DatesPage> {
             context: context,
             title: "Editar data:",
             titleControl: date.title,
-            priceControl: date.salary.toStringAsFixed(2),
+            priceControl: date.salary,
             confirmar: (title, price) {
               controller.editDate(
                 date: date,

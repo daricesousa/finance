@@ -1,0 +1,1 @@
+enum inputType {price, text}
