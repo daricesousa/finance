@@ -1,6 +1,5 @@
 import 'package:financas/controllers/dates_control.dart';
 import 'package:financas/controllers/expenses_control.dart';
-import 'package:financas/controllers/groups_control.dart';
 import 'package:financas/customs/card_custom.dart';
 import 'package:financas/customs/icon_app_bar.dart';
 import 'package:financas/customs/dialog.dart';
@@ -28,7 +27,7 @@ class _ExpensesPageState extends State<ExpensesPage> {
     controller.dispose();
     super.dispose();
   }
-  
+
   @override
   void initState() {
     controller = ExpensesControl(datesControl: widget.datesControl);

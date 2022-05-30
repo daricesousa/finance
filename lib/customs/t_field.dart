@@ -24,6 +24,7 @@ class TField extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: TextFormField(
+        autofocus: true,
         enabled: habilitado,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: validator,
