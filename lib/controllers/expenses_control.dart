@@ -8,16 +8,14 @@ class ExpensesControl extends ChangeNotifier {
   final DatesControl datesControl;
   ExpensesControl({required this.datesControl});
 
-  void newExpense(
-      {required ExpenseGroup group,
-      required String title,
-      required String price}) async {
+  void newExpense({
+    required ExpenseGroup group,
+    required String title,
+    required String price,
+  }) async {
     final newExpense = Expense();
-    newExpense.price = Convert.realForDouble(price);
-    newExpense.title = title;
     group.expenses.add(newExpense);
-    await datesControl.salvarDates();
-    notifyListeners();
+    editExpense(expense: newExpense, title: title, price: price);
   }
 
   void editExpense(
@@ -26,14 +24,14 @@ class ExpensesControl extends ChangeNotifier {
       required String price}) async {
     expense.price = Convert.realForDouble(price);
     expense.title = title;
-    await datesControl.salvarDates();
+    await datesControl.saveDate();
     notifyListeners();
   }
 
   void deleteExpense(
       {required ExpenseGroup group, required Expense expense}) async {
     group.expenses.removeWhere((element) => element.id == expense.id);
-    await datesControl.salvarDates();
+    await datesControl.saveDate();
     notifyListeners();
   }
 }

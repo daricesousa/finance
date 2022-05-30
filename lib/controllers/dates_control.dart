@@ -15,24 +15,21 @@ class DatesControl extends ChangeNotifier {
 
   void newDate({required String title, required String salary}) {
     final newDate = Date(title);
-    newDate.salary = Convert.realForDouble(salary);
     _dateList.insertAll(0, [newDate]);
-    salvarDates();
-    notifyListeners();
+    editDate(date: newDate, title: title, salary: salary);
   }
 
   void editDate(
       {required Date date, required String title, required String salary}) {
-        
     date.salary = Convert.realForDouble(salary);
     date.title = title;
-    salvarDates();
+    saveDate();
     notifyListeners();
   }
 
   void deleteDate({required Date date}) {
     _dateList.removeWhere((element) => element.id == date.id);
-    salvarDates();
+    saveDate();
     notifyListeners();
   }
 
@@ -44,10 +41,9 @@ class DatesControl extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> salvarDates() async {
+  Future<void> saveDate() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<Map<String, dynamic>> dates = _dateList.map((e) => e.toMap()).toList();
-    print(jsonEncode(dates));
     prefs.setString("data", jsonEncode(dates));
   }
 }

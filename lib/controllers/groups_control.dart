@@ -16,22 +16,18 @@ GroupsControl(
       final newGroup = ExpenseGroup();
       date.groups.add(newGroup);
       editGroup(group: newGroup, title: title, maxExpense: maxExpense);
-      newGroup.maxExpense = Convert.realForDouble(maxExpense);
-      newGroup.title = title;
-      await datesControl.salvarDates();
-      notifyListeners();
  }
 
  void editGroup({required ExpenseGroup group, required String title, required String maxExpense})async{
       group.maxExpense = Convert.realForDouble(maxExpense) ;
       group.title = title;
-      await datesControl.salvarDates();
+      await datesControl.saveDate();
       notifyListeners();
  }
 
  void deleteGroup({required Date date, required ExpenseGroup group})async{
     date.groups.removeWhere((element) => element.id == group.id);
-    await datesControl.salvarDates();
+    await datesControl.saveDate();
     notifyListeners();
 
  }
