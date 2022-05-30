@@ -12,16 +12,16 @@ class ExpenseGroup {
   ExpenseGroup.fromMap(Map<String, dynamic> map) {
     id = map["id"];
     title = map["title"];
-    expenses = map["expense"];
     maxExpense = map["maxExpense"];
+    expenses = map["expense"].map<Expense>((e) => Expense.fromMap(e)).toList();
   }
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = {
       "id": id,
       "title": title,
-      "expense": expenses,
-      "max-expense": maxExpense
+      "maxExpense": maxExpense,
+      "expense": expenses.map((e) => e.toMap()).toList(),
     };
     return map;
   }

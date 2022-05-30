@@ -1,3 +1,4 @@
+import 'package:financas/controllers/dates_control.dart';
 import 'package:financas/controllers/groups_control.dart';
 import 'package:financas/customs/card_custom.dart';
 import 'package:financas/customs/dialog.dart';
@@ -8,30 +9,47 @@ import 'package:financas/routes.dart';
 import 'package:flutter/material.dart';
 
 class GroupsPage extends StatefulWidget {
-  const GroupsPage({Key? key}) : super(key: key);
+  final Date date;
+  final DatesControl datesControl;
+  const GroupsPage({Key? key, required this.date, required this.datesControl})
+      : super(key: key);
 
   @override
   State<GroupsPage> createState() => _GroupsPageState();
 }
 
 class _GroupsPageState extends State<GroupsPage> {
-  final controller = GroupsControl();
+  late GroupsControl controller;
+  @override
+  void initState() {
+    controller = GroupsControl(datesControl: widget.datesControl);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final date = ModalRoute.of(context)!.settings.arguments as Date;
     return AnimatedBuilder(
         animation: controller,
         builder: (context, snapshot) {
           return Scaffold(
             appBar: AppBar(
-              title: Text(date.title),
+              title: Text(widget.date.title),
               centerTitle: true,
               actions: [
-                iconReport(context: context, date: date),
-                iconAdd(context: context, controller: controller, date: date),
+                iconReport(context: context, date: widget.date),
+                iconAdd(
+                    context: context,
+                    controller: controller,
+                    date: widget.date),
               ],
             ),
-            body: body(date),
+            body: body(widget.date),
           );
         });
   }
@@ -49,7 +67,8 @@ class _GroupsPageState extends State<GroupsPage> {
       text: group.title,
       price: "R\$ ${group.maxExpense.toStringAsFixed(2)}",
       onTap: () {
-        Navigator.pushNamed(context, RoutesName.EXPENSES, arguments: group);
+        Navigator.pushNamed(context, RoutesName.EXPENSES,
+            arguments: {"group": group, "datesControl": widget.datesControl});
       },
       onLongPress: () {
         alertaShowDialog(
@@ -57,11 +76,9 @@ class _GroupsPageState extends State<GroupsPage> {
             title: "Editar grupo:",
             titleControl: group.title,
             priceControl: group.maxExpense.toStringAsFixed(2),
-            confirmar: () {
+            confirmar: (text, price) {
               controller.editGroup(
-                  group: group,
-                  title: titleTextControl.text,
-                  maxExpense: price.text);
+                  group: group, title: text, maxExpense: price);
             });
       },
       delete: () {
@@ -81,11 +98,8 @@ Widget iconAdd({
       alertaShowDialog(
           context: context,
           title: "Novo grupo:",
-          confirmar: () {
-            controller.newGroup(
-                date: date,
-                title: titleTextControl.text,
-                maxExpense: price.text);
+          confirmar: (text, price) {
+            controller.newGroup(date: date, title: text, maxExpense: price);
           });
     },
     icon: Icons.add_circle,

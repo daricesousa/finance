@@ -3,17 +3,17 @@ import 'package:financas/customs/t_field.dart';
 import 'package:financas/customs/text_custom.dart';
 import 'package:flutter/material.dart';
 
-final titleTextControl = TextEditingController();
-final price = TextEditingController();
 
-void alertaShowDialog({
+Future<void> alertaShowDialog({
   required BuildContext context,
-  required Function()? confirmar,
+  required Function(String, String)? confirmar,
   String title = '',
   String titleControl = '',
   String priceControl = '',
-}) {
-  showDialog(
+})async {
+  final titleTextControl = TextEditingController();
+  final price = TextEditingController();
+  await showDialog(
     context: context,
     builder: (context) {
       titleTextControl.text = titleControl;
@@ -34,11 +34,12 @@ void alertaShowDialog({
         ),
         actions: <Widget>[
           Button(onPressed: () {
+            confirmar!(titleTextControl.text, price.text);
             Navigator.pop(context);
-            confirmar!();
           }),
         ],
       );
     },
   );
+  
 }

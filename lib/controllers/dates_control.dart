@@ -7,7 +7,7 @@ class DatesControl extends ChangeNotifier {
   List<Date> _dateList = [];
 
   DatesControl() {
-    _readData();
+    readData();
   }
 
   List<Date> get dateList => _dateList;
@@ -16,7 +16,7 @@ class DatesControl extends ChangeNotifier {
     final newDate = Date(title);
     newDate.salary = double.tryParse(salary) ?? 0;
     _dateList.insertAll(0, [newDate]);
-    _salvarDates();
+    salvarDates();
     notifyListeners();
   }
 
@@ -24,27 +24,28 @@ class DatesControl extends ChangeNotifier {
       {required Date date, required String title, required String salary}) {
     date.salary = double.tryParse(salary) ?? 0;
     date.title = title;
-    _salvarDates();
+    salvarDates();
     notifyListeners();
   }
 
   void deleteDate({required Date date}) {
     _dateList.removeWhere((element) => element.id == date.id);
+    salvarDates();
     notifyListeners();
   }
 
-  void _readData() async {
+  void readData() async {
     final prefs = await SharedPreferences.getInstance();
     String strFavorites = prefs.getString('data') ?? '[]';
     final dates = jsonDecode(strFavorites);
-
     _dateList = dates.map<Date>((e) => Date.fromMap(e)).toList();
     notifyListeners();
   }
 
-  Future<void> _salvarDates() async {
+  Future<void> salvarDates() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<Map<String, dynamic>> dates = _dateList.map((e) => e.toMap()).toList();
+    print(jsonEncode(dates));
     prefs.setString("data", jsonEncode(dates));
   }
 }

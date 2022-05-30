@@ -47,18 +47,23 @@ class _DatesPageState extends State<DatesPage> {
       text: date.title,
       price: "R\$ ${date.salary.toStringAsFixed(2)}",
       onTap: () {
-        Navigator.pushNamed(context, RoutesName.GROUPS, arguments: date);
+        Navigator.pushNamed(context, RoutesName.GROUPS,
+            arguments: {"date": date, "datesControl": controller});
       },
-      onLongPress: () {
-        alertaShowDialog(
+      onLongPress: () async {
+        await alertaShowDialog(
             context: context,
             title: "Editar data:",
             titleControl: date.title,
             priceControl: date.salary.toStringAsFixed(2),
-            confirmar: () {
+            confirmar: (title, price) {
               controller.editDate(
-                  date: date, title: titleTextControl.text, salary: price.text);
+                date: date,
+                title: title,
+                salary: price,
+              );
             });
+
       },
       delete: () {
         controller.deleteDate(date: date);
@@ -73,9 +78,9 @@ Widget iconAdd(BuildContext context, DatesControl controller) {
       alertaShowDialog(
           context: context,
           title: "Nova data:",
-          confirmar: () {
+          confirmar: (String title, String price) {
             controller.newDate(
-                title: titleTextControl.text, salary: price.text);
+                title: title, salary: price);
           });
     },
     icon: Icons.add_circle,

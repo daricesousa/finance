@@ -12,7 +12,7 @@ class Date {
     id = map["id"];
     title = map["title"];
     salary = map["salary"];
-    // groups = map["groups"];
+    groups = map["groups"].map<ExpenseGroup>((e) => ExpenseGroup.fromMap(e)).toList();
   }
 
   Map<String, dynamic> toMap() {
@@ -20,7 +20,7 @@ class Date {
       "id": id,
       "title": title,
       "salary": salary,
-      // "groups": groups,
+      "groups": groups.map((e) => e.toMap()).toList(),
     };
     return map;
   }

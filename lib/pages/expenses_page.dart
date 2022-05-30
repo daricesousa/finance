@@ -1,4 +1,6 @@
+import 'package:financas/controllers/dates_control.dart';
 import 'package:financas/controllers/expenses_control.dart';
+import 'package:financas/controllers/groups_control.dart';
 import 'package:financas/customs/card_custom.dart';
 import 'package:financas/customs/icon_app_bar.dart';
 import 'package:financas/customs/dialog.dart';
@@ -8,30 +10,46 @@ import 'package:financas/routes.dart';
 import 'package:flutter/material.dart';
 
 class ExpensesPage extends StatefulWidget {
-  const ExpensesPage({Key? key}) : super(key: key);
+  final DatesControl datesControl;
+  final ExpenseGroup group;
+  const ExpensesPage(
+      {Key? key, required this.datesControl, required this.group})
+      : super(key: key);
 
   @override
   State<ExpensesPage> createState() => _ExpensesPageState();
 }
 
 class _ExpensesPageState extends State<ExpensesPage> {
-  final controller = ExpensesControl();
+  late ExpensesControl controller;
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+  
+  @override
+  void initState() {
+    controller = ExpensesControl(datesControl: widget.datesControl);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final group = ModalRoute.of(context)!.settings.arguments as ExpenseGroup;
     return AnimatedBuilder(
         animation: controller,
         builder: (context, snapshot) {
           return Scaffold(
             appBar: AppBar(
-              title: Text(group.title),
+              title: Text(widget.group.title),
               centerTitle: true,
               actions: [
-                iconReport(context, group),
-                iconAdd(context, controller, group),
+                iconReport(context, widget.group),
+                iconAdd(context, controller, widget.group),
               ],
             ),
-            body: body(group),
+            body: body(widget.group),
           );
         });
   }
@@ -70,9 +88,8 @@ Widget iconAdd(context, controller, group) {
       alertaShowDialog(
           context: context,
           title: "Novo gasto:",
-          confirmar: () {
-            controller.newExpense(
-                group: group, title: titleTextControl.text, price: price.text);
+          confirmar: (text, price) {
+            controller.newExpense(group: group, title: text, price: price);
           });
     },
     icon: Icons.add_circle,
@@ -89,14 +106,14 @@ Widget iconReport(context, group) {
   );
 }
 
-void dialog(BuildContext context, Expense expense, ExpensesControl controller) {
-  return alertaShowDialog(
+Future<void> dialog(
+    BuildContext context, Expense expense, ExpensesControl controller) async {
+  await alertaShowDialog(
       context: context,
       title: "Novo gasto:",
       titleControl: expense.title,
       priceControl: expense.price.toStringAsFixed(2),
-      confirmar: () {
-        controller.editExpense(
-            expense: expense, title: titleTextControl.text, price: price.text);
+      confirmar: (text, price) {
+        controller.editExpense(expense: expense, title: text, price: price);
       });
 }
